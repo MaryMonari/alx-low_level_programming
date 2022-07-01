@@ -6,4 +6,5 @@
 4- This is a program program that prints the alphabet in lowercase, except q and e, followed by a new line.
 5- This is a program that prints all single digit numbers of base 10 starting from 0, followed by a new line.
 6- This is a program that prints all single digit numbers of base 10 starting from 0, followed by a new line. 
-
+7- This is a program that prints the lowercase alphabet in reverse, followed by a new line.
+ 
