@@ -2,7 +2,8 @@
 
 /**
  * main - entry point
- * printall single digit numbers of base 10 starting from 0 followed by newline
+ * print all single digit numbers of base 10 startingfrom 0 followed by newline
+ * Return:always 0
  */
 
 int main(void)
