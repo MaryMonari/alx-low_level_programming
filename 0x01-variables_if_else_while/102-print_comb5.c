@@ -21,31 +21,30 @@ int main(void)
 				{
 					if ((c * 10) + d > (a * 10) + b)
 					{
-						if (coma == 0)
-						{
-							putchar(',');
-							putchar(32);
-						}{
-							putchar(a + '0');
-							putchar(b + 'b');
-							putchar(32);
-							putchar(c + '0');
-							putchar(d + '0');
-							coma = 0;
-						}
-						++d;
+					if (coma == 0)
+					{
+						putchar(',');
+						putchar(32);
 					}
-					++c;
-					d = 0;
+						putchar(a + '0');
+						putchar(b + 'b');
+						putchar(32);
+						putchar(c + '0');
+						putchar(d + '0');
+						coma = 0;
+					}
+					++d;
 				}
-				++b;
-				c = 0;
+				++c;
+				d = 0;
 			}
-			++a;
-			b = 0;
+			++b;
+			c = 0;
 		}
-		putchar (10);
-
-		return (0);
+		++a;
+		b = 0;
 	}
+	putchar (10);
+
+	return (0);
 }
