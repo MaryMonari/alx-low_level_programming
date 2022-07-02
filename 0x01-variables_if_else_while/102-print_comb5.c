@@ -27,7 +27,7 @@ int main(void)
 						putchar(32);
 					}
 						putchar(a + '0');
-						putchar(b + 'b');
+						putchar(b + '0');
 						putchar(32);
 						putchar(c + '0');
 						putchar(d + '0');
