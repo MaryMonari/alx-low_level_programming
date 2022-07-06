@@ -2,7 +2,7 @@
 
 /**
  * main - main function
- * Return: end program
+ * Return: always 0
  */
 int main(void)
 {
@@ -10,7 +10,7 @@ int main(void)
 
 	for (n = 0; n < 1024; ++n)
 	{
-		if ((n % 3) == 0 | | (n % 5) == 0)
+		if ((n % 3) == 0 || (n % 5) == 0)
 		{
 			s = s + n;
 		}
