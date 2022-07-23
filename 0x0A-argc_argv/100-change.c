@@ -1,35 +1,51 @@
 #include "main.h"
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 /**
- * main - Entry point
- * @argc: number of params
- * @argv: array of params
- *
- * Return: SUCCESS ? 0 : 1
+ * main - main function
+ * @argc: argumentc
+ * @argv: vector of arguments
+ *Return: always 0
  */
-
-int main(int argc, char *argv[])
+int main(int argc, char  *argv[])
 {
-	int _coins[5] = {25, 10, 5, 2, 1};
-	int i, cents, coins = 0;
+	int coins = 0;
 
-	if (argc != 2)
-		goto ERROR;
-
-	cents = atoi(argv[1]);
-
-	if (cents < 0)
-		goto DONE;
-
-	for (i = 0; i < 5; i++)
+	if (argc == 2)
 	{
-		coins += cents / _coins[i];
-		cents %= _coins[i];
+		if (strchr(argv[argc - 1], '-'))
+		{
+			printf("0\n");
+			return (1);
+		}
+		int money;
+
+		money = atoi(argv[argc - 1]);
+
+		while (money > 0)
+		{
+			if (money % 25 == 0)
+			{
+				money -= 25;
+			} else if (money % 10 == 0)
+			{
+				money -= 10;
+			} else if (money % 5 == 0)
+			{
+				money -= 5;
+			} else if (money % 2 == 0)
+			{
+				money -= 2;
+			} else
+			{
+				money--;
+			}
+			coins++;
+		}
+		printf("%d\n", coins);
+		return (0);
 	}
-
-DONE:	printf("%d\n", coins);
-	return (0);
-
-ERROR:	printf("Error\n");
+	printf("Error\n");
 	return (1);
 }
