@@ -1,51 +1,59 @@
-#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
 /**
- * main - main function
- * @argc: argumentc
- * @argv: vector of arguments
- *Return: always 0
+ * isInteger - checks if s is an integer
+ * @s: string to check
+ * Return: 0 or 1
  */
-int main(int argc, char  *argv[])
+
+int isInteger(const char *s)
 {
-	int coins = 0;
+	int i = 0;
 
-	if (argc == 2)
+
+	while (s[i] != '\0')
 	{
-		if (strchr(argv[argc - 1], '-'))
-		{
-			printf("0\n");
-			return (1);
-		}
-		int money;
-
-		money = atoi(argv[argc - 1]);
-
-		while (money > 0)
-		{
-			if (money % 25 == 0)
-			{
-				money -= 25;
-			} else if (money % 10 == 0)
-			{
-				money -= 10;
-			} else if (money % 5 == 0)
-			{
-				money -= 5;
-			} else if (money % 2 == 0)
-			{
-				money -= 2;
-			} else
-			{
-				money--;
-			}
-			coins++;
-		}
-		printf("%d\n", coins);
-		return (0);
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+		i++;
 	}
-	printf("Error\n");
 	return (1);
+}
+
+/**
+ * main - adds positive numbers
+ * @argc: int
+ * @argv: list
+ * Return: 0
+ */
+
+int main(int argc, char const *argv[])
+{
+	int i = 0, coinUsed = 0, coin = 0;
+	int coins[] = {25, 10, 5, 2, 1};
+
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	if (isInteger(argv[1]))
+	{
+		i = atoi(argv[1]);
+		while (i > 0 && coin <= 4)
+		{
+			if (i >= coins[coin])
+			{
+				i -= coins[coin];
+				coinUsed++;
+			}
+			else
+			{
+				coin++;
+			}
+		}
+	}
+	printf("%i\n", coinUsed);
+	return (0);
 }
