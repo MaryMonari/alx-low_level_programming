@@ -1,2 +1,1 @@
-#!/bin/bash
-Hello World C project
+C Language tasks
