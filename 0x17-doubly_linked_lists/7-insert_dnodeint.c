@@ -1,52 +1,50 @@
 #include "lists.h"
+
 /**
- * insert_dnodeint_at_index - insert node at index?
- * @h: address of linked list
- * @idx: index to place list
- * @n: value of n
- * Return: return new node or NULL
- */
+  * insert_dnodeint_at_index -  inserts a new node at a given position
+  * @h: header of double linked list
+  * @idx: index of the node, starting from 0
+  * @n: is a given number
+  * Return: a address of nth node
+  */
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
-	dlistint_t *tmp, *new;
-	unsigned int dex = 1;
+	dlistint_t *new, *headcopy = *h;
+	unsigned int i;
 
-	tmp = *h;
 	new = malloc(sizeof(dlistint_t));
 	if (new == NULL)
 		return (NULL);
 	new->n = n;
-	new->prev = NULL;
-	new->next = NULL;
-	if ((*h) == NULL)
+	while (headcopy != NULL && headcopy->prev != NULL)
 	{
-		if (idx == 0)
-		{
-			*h = new;
-			return (new);
-		}
-		return (NULL);
+		headcopy = headcopy->prev;
+		*h = (*h)->prev;
 	}
 	if (idx == 0)
 	{
-		new->next = *h;
-		(*h)->prev = new;
-		*h = new;
-		return (new);
+		free(new);
+		return (add_dnodeint(h, n));
 	}
-	while (tmp->next != NULL && dex != idx)
+
+	for (i = 0; (i < idx - 1) && headcopy != NULL; i++)
+		headcopy = headcopy->next;
+	if (headcopy == NULL)
 	{
-		tmp = tmp->next;
-		dex++;
+		free(new);
+		return (NULL);
 	}
-	if (dex == idx)
+	if (headcopy->next == NULL)
 	{
-		new->prev = tmp;
-		new->next = tmp->next;
-		if (tmp->next != NULL)
-			tmp->next->prev = new;
-		tmp->next = new;
-		return (new);
+		new->next = NULL;
+		new->prev = headcopy;
+		headcopy->next = new;
+	} else
+	{
+		new->next = headcopy->next;
+		new->prev = headcopy;
+		headcopy->next->prev = new;
+		headcopy->next = new;
 	}
-	return (NULL);
+	return (new);
 }
